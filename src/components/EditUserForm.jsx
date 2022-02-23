@@ -1,14 +1,13 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 
-const AddUserForm = (props) => {
+const EditUserForm = (props) => {
 
     const {register, handleSubmit, formState: {errors} } = useForm()
 
     const onSubmit = (data, e) => {
         console.log(data)
-
-        props.addUser(data)
+       
         //limpiar campos
         e.target.reset();
     }
@@ -49,9 +48,9 @@ const AddUserForm = (props) => {
                 && <span>This is required</span>    
             }
             <ul></ul>
-            <button>Add new user</button>
+            <button>Edit user</button>
         </form>
      );
 }
  
-export default AddUserForm;
+export default EditUserForm;
