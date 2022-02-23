@@ -3,11 +3,18 @@ import { useForm } from 'react-hook-form';
 
 const EditUserForm = (props) => {
 
-    const {register, handleSubmit, formState: {errors} } = useForm()
+    const {register, handleSubmit, setValue, formState: {errors} } = useForm({
+        defaultValues: props.currentUser
+    })
+
+    setValue('name', props.currentUser.name)
+    setValue('username', props.currentUser.username)
 
     const onSubmit = (data, e) => {
         console.log(data)
-       
+        data.id = props.currentUser.id
+        props.updateUser(props.currentUser.id, data)
+
         //limpiar campos
         e.target.reset();
     }
